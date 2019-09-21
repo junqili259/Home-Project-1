@@ -15,6 +15,11 @@ my_unique_ptr<T>::my_unique_ptr(): unique_ptr(nullptr){}
 //template<typename T>
 //my_unique_ptr<T>::my_unique_ptr(T* )
 
+template<typename T>
+my_unique_ptr<T>::~my_unique_ptr(){
+    delete unique_ptr;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 template<typename Y>
