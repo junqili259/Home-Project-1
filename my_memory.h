@@ -11,6 +11,7 @@ template<typename T>
 class my_unique_ptr{
     public:
         my_unique_ptr();
+        ~my_unique_ptr();
     private:
         T* unique_ptr;
 
