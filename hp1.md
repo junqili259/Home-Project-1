@@ -13,7 +13,10 @@ You should submit me two files: **my_memory.h** and **my_memory.cpp**. my_memory
 
 Class template **my_unique_ptr** is a pointer management class template. The object of this class points to the dynamically allocated memory. Only one object of the my_unique_ptr class can point to a given block of memory. Once the object of the my_unique_ptr class is destroyed it releases/deletes the block of memory to which it was pointing. We say that the my_unique_ptr object owns the memory.
 
-The innards of the my_unique_ptr class are very simple: it contains a pointer to the datatype Type specified in the template (well, the actual unique_ptr also contains the deleter for the objects of Type but we don’t need it). Also, it contains the following public methods:
+The innards of the my_unique_ptr class are very simple: 
++It contains a pointer to the datatype Type specified in the template (well, the actual unique_ptr also contains the deleter for the objects of Type but we don’t need it). 
+
+Also, it contains the following public methods:
 
 + ~~Default constructor that initializes the object to point to nullptr.~~
 + Constructor that takes a pointer Type * as a parameter and sets the object to point there. We say that the newly created object takes ownership of the pointed memory.
