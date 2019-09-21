@@ -1,7 +1,8 @@
 # Home Project 1
 ### Due October 2, 11:59pm. No late submissions are accepted!
 
--Every header and source-code file you submit should start with a comment with your name in it.
+-Every header and source-code file you submit should start with a comment with your name in it.--
+
 -Your program should be submitted ONLY through the Blackboard. You should submit only the source code and headers (.cpp and header files).
 -The assignment is for the individual work only. You are responsible for every statement in your code.
 
