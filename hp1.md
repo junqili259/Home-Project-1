@@ -35,7 +35,7 @@ Class template **my_shared_ptr** is a pointer management class template. The obj
 
 Two main pieces of data that we need in the my_shared_ptr class are:
 
-+ pointer to the datatype Type stated in the template parameter.
++ ~~pointer to the datatype Type stated in the template parameter.~~
 + pointer to an integer counter, that keeps track of how many my_shared_ptr objects point to the same block of memory.
 
 The following methods should be implemented:
