@@ -12,7 +12,8 @@ class my_unique_ptr{
     public:
         my_unique_ptr();//default constructor
         my_unique_ptr(const my_unique_ptr&) = delete;//copy constructor
-        my_unique_ptr& operator = (const my_unique_ptr&) = delete;//copy assignment operator
+        my_unique_ptr& operator=(const my_unique_ptr&) = delete;//copy assignment operator
+        my_unique_ptr& operator=(my_unique_ptr&&); //move assignment operator
         ~my_unique_ptr();//destructor
     private:
         T* unique_ptr;
