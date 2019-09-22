@@ -40,7 +40,7 @@ Two main pieces of data that we need in the my_shared_ptr class are:
 
 The following methods should be implemented:
 
-+ Default constructor that sets all inner pointers to nullptr.
++ ~~Default constructor that sets all inner pointers to nullptr.~~
 + Constructor that takes Type * as a parameter and sets the object to point there. The object considers itself to be the first my_shared_ptr object to point to that block of memory. So the counter should be set to 1.
 + Copy constructor. Since the original object already points to the block of memory and now the newly created object points there too, you must increase the counter by 1.
 + Move constructor. Since the original rvalue wont point to the block of memory no more, the counter should remain the same.
