@@ -11,7 +11,13 @@ my_memory_cpp
 template<typename T>
 my_unique_ptr<T>::my_unique_ptr(): unique_ptr(nullptr){}
 
+//Move assignment operator
+template<typename T>
+my_unique_ptr<T>::my_unique_ptr& operator=(my_unique_ptr&&){
 
+}
+
+//Destructor
 template<typename T>
 my_unique_ptr<T>::~my_unique_ptr(){
     delete unique_ptr;
