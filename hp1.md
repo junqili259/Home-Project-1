@@ -21,7 +21,7 @@ Also, it contains the following public methods:
 + ~~Default constructor that initializes the object to point to nullptr.~~
 + Constructor that takes a pointer Type * as a parameter and sets the object to point there. We say that the newly created object takes ownership of the pointed memory.
 + Move constructor that takes my_unique_ptr object and constructs a new object from it.
-+ Copy constructor should be explicitly disabled/deleted !!!
++ ~~Copy constructor should be explicitly disabled/deleted !!!~~
 + ~~Destructor that releases/deletes the block of memory pointed by the object.~~
 + Dereference operator * that returns a reference to the item pointed by the object.
 + Operator -> that returns the pointer to the object. It allows to use the my_unique_ptr object for class member access.
