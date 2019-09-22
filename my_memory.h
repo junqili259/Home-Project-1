@@ -10,8 +10,10 @@ my_memory.h
 template<typename T>
 class my_unique_ptr{
     public:
-        my_unique_ptr();
-        ~my_unique_ptr();
+        my_unique_ptr();//default constructor
+        my_unique_ptr(const my_unique_ptr&) = delete;//copy constructor
+        my_unique_ptr& operator = (const my_unique_ptr&) = delete;//copy assignment operator
+        ~my_unique_ptr();//destructor
     private:
         T* unique_ptr;
 
@@ -20,7 +22,8 @@ class my_unique_ptr{
 template<typename Y>
 class my_shared_ptr{
     public:
-        my_shared_ptr();
+        my_shared_ptr();//default constructor
+        ~my_shared_ptr();//destructor
     private:
         Y* shared_ptr;
         int* counter;
