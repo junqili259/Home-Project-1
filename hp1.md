@@ -21,12 +21,12 @@ Also, it contains the following public methods:
 + ~~Default constructor that initializes the object to point to nullptr.~~
 + Constructor that takes a pointer Type * as a parameter and sets the object to point there. We say that the newly created object takes ownership of the pointed memory.
 + Move constructor that takes my_unique_ptr object and constructs a new object from it.
-+ Copy constructor should be explicitly disabled/deleted !!!
++ ~~Copy constructor should be explicitly disabled/deleted !!!~~
 + ~~Destructor that releases/deletes the block of memory pointed by the object.~~
 + Dereference operator * that returns a reference to the item pointed by the object.
 + Operator -> that returns the pointer to the object. It allows to use the my_unique_ptr object for class member access.
 + Move assignment operator.
-+ Copy assignment operator must be explicitly disabled/deleted !!!
++ ~~Copy assignment operator must be explicitly disabled/deleted !!!~~
 
 
 
@@ -40,7 +40,7 @@ Two main pieces of data that we need in the my_shared_ptr class are:
 
 The following methods should be implemented:
 
-+ Default constructor that sets all inner pointers to nullptr.
++ ~~Default constructor that sets all inner pointers to nullptr.~~
 + Constructor that takes Type * as a parameter and sets the object to point there. The object considers itself to be the first my_shared_ptr object to point to that block of memory. So the counter should be set to 1.
 + Copy constructor. Since the original object already points to the block of memory and now the newly created object points there too, you must increase the counter by 1.
 + Move constructor. Since the original rvalue wont point to the block of memory no more, the counter should remain the same.
