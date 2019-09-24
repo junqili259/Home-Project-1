@@ -43,6 +43,13 @@ my_unique_ptr<T>::my_unique_ptr& operator = (my_unique_ptr&& other_obj)
 
 
 template<typename T>
+my_unique_ptr& my_unique_ptr<T>::operator*()
+{
+    return *this;
+}
+
+
+template<typename T>
 my_unique_ptr<T>* my_unique_ptr<T>::operator->()
 {
     return this;
