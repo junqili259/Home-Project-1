@@ -19,15 +19,17 @@ my_unique_ptr<T>::my_unique_ptr(T* a_ptr): unique_ptr(a_ptr){}
 
 //Move constructor for class my_unqiue_ptr
 template<typename T>
-my_unique_ptr<T>::my_unique_ptr(my_unique_ptr&& other_obj):unique_ptr(other_obj.unique_ptr)
+my_unique_ptr<T>::my_unique_ptr(my_unique_ptr<T>&& other_obj):unique_ptr(other_obj.unique_ptr)
 {
     other_obj.unique_ptr = nullptr;
 }
 
 
 //Move assignment operator for class my_unique_ptr
+/*
 template<typename T>
-my_unique_ptr<T>::my_unique_ptr& operator = (my_unique_ptr&& other_obj)
+my_unique_ptr<T>::my_unique_ptr<T>& operator=(my_unique_ptr<T>&& other_obj)
+//my_unique_ptr<T>::my_unique_ptr<T>& operator=(my_unique_ptr<T>&& other_obj)
 {
     if(this == &other_obj)
     {
@@ -35,15 +37,16 @@ my_unique_ptr<T>::my_unique_ptr& operator = (my_unique_ptr&& other_obj)
     }
     else
     {
-        delete this->unique_ptr;//delete existing resources for this object
-        this->unique_ptr = other_obj.unqiue_ptr;
+        delete unique_ptr;//delete existing resources for this object
+        unique_ptr = other_obj.unqiue_ptr;
         other_obj.unqiue_ptr = nullptr;
     }
 }
+*/
 
 
 template<typename T>
-my_unique_ptr& my_unique_ptr<T>::operator*()
+my_unique_ptr<T>& my_unique_ptr<T>::operator*()
 {
     return *this;
 }
