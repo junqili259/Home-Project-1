@@ -16,7 +16,7 @@ class my_unique_ptr{
         my_unique_ptr& operator=(const my_unique_ptr&) = delete;//copy assignment operator
         my_unique_ptr(my_unique_ptr&& other_obj) //move constructor
         my_unique_ptr& operator=(my_unique_ptr&&); //move assignment operator
-        
+        my_unique_ptr& operator*(); //deference operator
         my_unique_ptr<T>* operator->()//Operator -> overloaded
         ~my_unique_ptr();//destructor
     private:
