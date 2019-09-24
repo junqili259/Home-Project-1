@@ -11,6 +11,20 @@ my_memory_cpp
 template<typename T>
 my_unique_ptr<T>::my_unique_ptr(): unique_ptr(nullptr){}
 
+
+//Constructor
+template<typename T>
+my_unique_ptr<T>::my_unique_ptr(T* a_ptr): unique_ptr(a_ptr){}
+
+
+//Move constructor
+template<typename T>
+my_unique_ptr<T>::my_unique_ptr(my_unique_ptr&& other_obj){
+    unique_ptr = other_obj.unique_ptr;
+    other_obj.unique_ptr = nullptr;
+}
+
+
 //Move assignment operator
 template<typename T>
 my_unique_ptr<T>::my_unique_ptr& operator=(my_unique_ptr&&){
