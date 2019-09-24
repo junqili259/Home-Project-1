@@ -25,7 +25,7 @@ Also, it contains the following public methods:
 + ~~Destructor that releases/deletes the block of memory pointed by the object.~~
 + Dereference operator * that returns a reference to the item pointed by the object.
 + Operator -> that returns the pointer to the object. It allows to use the my_unique_ptr object for class member access.
-+ Move assignment operator.
++ ~~Move assignment operator.~~
 + ~~Copy assignment operator must be explicitly disabled/deleted !!!~~
 
 
