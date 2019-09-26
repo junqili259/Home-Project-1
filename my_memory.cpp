@@ -8,57 +8,65 @@ my_memory_cpp
 
 //Default Constructor for class my_unique_ptr 
 //Initialize pointer to null
-template<typename T>
+template<class T>
 my_unique_ptr<T>::my_unique_ptr(): unique_ptr(nullptr){}
 
 
 //Constructor for class my_unique_ptr
-template<typename T>
+template<class T>
 my_unique_ptr<T>::my_unique_ptr(T* a_ptr): unique_ptr(a_ptr){}
 
 
-//Move constructor for class my_unqiue_ptr
-template<typename T>
-my_unique_ptr<T>::my_unique_ptr(my_unique_ptr&& other_obj):unique_ptr(other_obj.unique_ptr)
+//Move constructor for class my_unique_ptr
+template<class T>
+my_unique_ptr<T>::my_unique_ptr(my_unique_ptr<T>&& other_obj):unique_ptr(other_obj.unique_ptr)
 {
     other_obj.unique_ptr = nullptr;
 }
 
 
 //Move assignment operator for class my_unique_ptr
-template<typename T>
-my_unique_ptr<T>::my_unique_ptr& operator = (my_unique_ptr&& other_obj)
+
+template<class T>
+my_unique_ptr<T>& my_unique_ptr<T>::operator=(my_unique_ptr<T>&& other_obj)
 {
-    if(this == &other_obj)
+    my_unique_ptr<T> temp_ptr;
+    temp_ptr.unique_ptr = unique_ptr;
+    unique_ptr = other_obj.unique_ptr;
+    other_obj.unique_ptr = nullptr;
+    delete temp_ptr.unique_ptr;
+}
+
+
+
+
+template<class T>
+bool my_unique_ptr<T>::isNullptr(){
+    if (unique_ptr == nullptr)
     {
-        return *this;
-    }
-    else
-    {
-        delete this->unique_ptr;//delete existing resources for this object
-        this->unique_ptr = other_obj.unqiue_ptr;
-        other_obj.unqiue_ptr = nullptr;
+        return true;
     }
 }
 
 
-template<typename T>
-my_unique_ptr& my_unique_ptr<T>::operator*()
+template<class T>
+T& my_unique_ptr<T>::operator*()
 {
-    return *this;
+    return *unique_ptr;
 }
 
 
-template<typename T>
-my_unique_ptr<T>* my_unique_ptr<T>::operator->()
+
+template<class T>
+T* my_unique_ptr<T>::operator->()
 {
-    return this;
+    return unique_ptr;
 }
 
 
 
 //Destructor for class my_unique_ptr
-template<typename T>
+template<class T>
 my_unique_ptr<T>::~my_unique_ptr(){
     delete unique_ptr;
 }
@@ -66,7 +74,7 @@ my_unique_ptr<T>::~my_unique_ptr(){
 
 ////////////////////////////////////////////////////////////////////////////////
 //Default constructor for class my_shared_ptr
-template<typename Y>
-my_shared_ptr<Y>::my_shared_ptr(): shared_ptr(nullptr),counter_ptr(nullptr){}
+//template<typename Y>
+//my_shared_ptr<Y>::my_shared_ptr(): shared_ptr(nullptr),counter_ptr(nullptr){}
 
 
