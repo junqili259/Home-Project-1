@@ -45,8 +45,8 @@ The following methods should be implemented:
 + Copy constructor. Since the original object already points to the block of memory and now the newly created object points there too, you must increase the counter by 1.
 + Move constructor. Since the original rvalue wont point to the block of memory no more, the counter should remain the same.
 + Destructor that releases/deletes the block of memory and the counter if no other shared pointer points there .
-+ Dereference operator * that returns a reference to the item pointed by the object.
-+ Operator -> that returns the pointer to the object. It allows to use the my_shared_ptr object for class member access.
++ ~~Dereference operator * that returns a reference to the item pointed by the object.~~
++ ~~Operator -> that returns the pointer to the object. It allows to use the my_shared_ptr object for class member access.~~
 + Copy and move assignment operators. If prior to the assignment the my_shared_ptr object was already pointing somewhere, the counter for the old block of memory should be decreased by 1, and if it reaches 0, the old block of memory should be released/deleted. Copy assignment should also increase the counter for the newly pointed block of memory.
 
 
