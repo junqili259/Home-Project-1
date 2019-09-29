@@ -131,6 +131,7 @@ my_shared_ptr<Y>::my_shared_ptr(my_shared_ptr<Y>&& other_obj): shared_ptr(other_
 template<class Y>
 my_shared_ptr<Y> & my_shared_ptr<Y>::operator=(my_shared_ptr<Y>&& other_obj)
 {
+  /*
   if (shared_ptr != nullptr)
   {
     *counter_ptr-=1;
@@ -140,6 +141,16 @@ my_shared_ptr<Y> & my_shared_ptr<Y>::operator=(my_shared_ptr<Y>&& other_obj)
       //delete shared_ptr;
       this->~my_shared_ptr();
     }
+  }
+  */
+
+  if (shared_ptr != nullptr && *counter_ptr == 1)
+  {
+    this->~my_shared_ptr();
+  }
+  else if (shared_ptr != nullptr && *counter_ptr > 1)
+  {
+    *counter_ptr-=1;
   }
   
   shared_ptr = other_obj.shared_ptr;
