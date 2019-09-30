@@ -37,7 +37,7 @@ class my_shared_ptr{
         my_shared_ptr(const my_shared_ptr<Y>& other_obj);//copy constructor
         my_shared_ptr & operator=(const my_shared_ptr<Y>& other_obj);//copy assignment
         my_shared_ptr(my_shared_ptr<Y>&& other_obj);// move constructor
-        my_shared_ptr & operator=(my_shared_ptr<Y>&& other_obj);
+        my_shared_ptr & operator=(my_shared_ptr<Y>&& other_obj);//move assignment
         Y& operator*();//deference operator
         Y* operator->();//Operator -> overloaded
         ~my_shared_ptr();//destructor
