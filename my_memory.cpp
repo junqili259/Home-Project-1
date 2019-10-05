@@ -94,7 +94,11 @@ my_shared_ptr<Y>::my_shared_ptr(Y* ptr): shared_ptr(ptr), counter_ptr(new int{1}
 template<class Y>
 my_shared_ptr<Y>::my_shared_ptr(const my_shared_ptr<Y>& other_obj): shared_ptr(other_obj.shared_ptr), counter_ptr(other_obj.counter_ptr)
 {
-    *counter_ptr+=1;
+    if (counter_ptr != nullptr)
+    {
+      *counter_ptr+=1;
+    }
+    //*counter_ptr+=1;
 }
 
 
@@ -135,42 +139,23 @@ my_shared_ptr<Y>::my_shared_ptr(my_shared_ptr<Y>&& other_obj): shared_ptr(other_
 template<class Y>
 my_shared_ptr<Y> & my_shared_ptr<Y>::operator=(my_shared_ptr<Y>&& other_obj)
 {
-
-  /*
-  if (shared_ptr != nullptr && *counter_ptr == 1)
-  {
-    // *counter_ptr-=1;
-    this->~my_shared_ptr();
-    //delete counter_ptr;
-    //delete shared_ptr;
-
-  }
-  else if (shared_ptr != nullptr && *counter_ptr > 1)
-  {
-    *counter_ptr-=1;
-  }
-  
-  shared_ptr = other_obj.shared_ptr;
-  counter_ptr = other_obj.counter_ptr;
-
-  other_obj.shared_ptr = nullptr;
-  other_obj.counter_ptr = nullptr;
-  return *this;
-  */
-
+  //check if same memory address
   if (this == &other_obj)
   {
     return *this;
   }
   else
-  {
+  { 
+    //check if pointer was pointing prior to assignment
     if (shared_ptr != nullptr && counter_ptr != nullptr)
     {
       *counter_ptr-=1;
+
+      //delete object pointed to if no more pointers point there
       if (*counter_ptr == 0)
       {
         delete counter_ptr;
-        delete shared_ptr;
+        //delete shared_ptr;
 
         counter_ptr = nullptr;
         shared_ptr = nullptr;
