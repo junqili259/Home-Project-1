@@ -114,7 +114,6 @@ my_shared_ptr<Y> & my_shared_ptr<Y>::operator=(const my_shared_ptr<Y>& other_obj
   }
   
   else
-    my_shared_ptr<Y> temp_obj(other_obj);
   	//de allocate this object's data
     if (shared_ptr != nullptr && counter_ptr != nullptr)
     {
