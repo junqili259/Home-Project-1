@@ -114,36 +114,18 @@ my_shared_ptr<Y> & my_shared_ptr<Y>::operator=(const my_shared_ptr<Y>& other_obj
   }
   
   else
-
+    my_shared_ptr<Y> temp_obj(other_obj);
   	//de allocate this object's data
     if (shared_ptr != nullptr && counter_ptr != nullptr)
     {
       *counter_ptr-=1;
-      if (*counter_ptr == 0)
-      {
-        my_shared_ptr<Y> temp = other_obj;
-
-        delete shared_ptr;
-        delete counter_ptr;
-
-        shared_ptr = nullptr;
-        counter_ptr = nullptr;
-
-      }
+      
+      shared_ptr = nullptr;
+      counter_ptr = nullptr;
     }
-    
-    
-      shared_ptr = other_obj.shared_ptr;
-      counter_ptr = other_obj.counter_ptr;
-    
     //Assign data from other object to this object
-    //shared_ptr = other_obj.shared_ptr;
-    //counter_ptr = other_obj.counter_ptr;
-
-    //shared_ptr = temp.shared_ptr;
-    //counter_ptr = temp.counter_ptr;
-
-
+    shared_ptr = other_obj.shared_ptr;
+    counter_ptr = other_obj.counter_ptr;
     
     if (counter_ptr != nullptr)
     {
@@ -184,9 +166,6 @@ my_shared_ptr<Y> & my_shared_ptr<Y>::operator=(my_shared_ptr<Y>&& other_obj)
       //delete object pointed to if no more pointers point there
       if (*counter_ptr == 0)
       {
-        delete counter_ptr;
-        //delete shared_ptr;
-
         counter_ptr = nullptr;
         shared_ptr = nullptr;
       }
