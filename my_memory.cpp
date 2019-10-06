@@ -111,16 +111,34 @@ my_shared_ptr<Y> & my_shared_ptr<Y>::operator=(const my_shared_ptr<Y>& other_obj
   {
     return *this;
   }
+  
   else
+    
   	//de allocate this object's data
-    delete shared_ptr;
-    delete counter_ptr;
+    if (shared_ptr != nullptr && counter_ptr != nullptr)
+    {
+      *counter_ptr-=1;
+      if (*counter_ptr == 0)
+      {
+        delete shared_ptr;
+        delete counter_ptr;
+
+        shared_ptr = nullptr;
+        counter_ptr = nullptr;
+      }
+    }
 
     //Assign data from other object to this object
     shared_ptr = other_obj.shared_ptr;
     counter_ptr = other_obj.counter_ptr;
-    *counter_ptr+=1;
+    // *counter_ptr+=1;
+    if (counter_ptr != nullptr)
+    {
+      *counter_ptr+=1;
+    }
+
     return *this;
+
 }
 
 
