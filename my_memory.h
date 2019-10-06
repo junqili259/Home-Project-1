@@ -41,9 +41,11 @@ class my_shared_ptr{
         Y& operator*();//deference operator
         Y* operator->();//Operator -> overloaded
         ~my_shared_ptr();//destructor
+        bool isNullptr();//test for null pointer
 
         //Test functions
         int getCount();
+        bool isCounterNull();
 
     private:
         Y* shared_ptr;
