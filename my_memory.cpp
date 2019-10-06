@@ -98,7 +98,6 @@ my_shared_ptr<Y>::my_shared_ptr(const my_shared_ptr<Y>& other_obj): shared_ptr(o
     {
       *counter_ptr+=1;
     }
-    //*counter_ptr+=1;
 }
 
 
@@ -106,6 +105,8 @@ my_shared_ptr<Y>::my_shared_ptr(const my_shared_ptr<Y>& other_obj): shared_ptr(o
 template<class Y>
 my_shared_ptr<Y> & my_shared_ptr<Y>::operator=(const my_shared_ptr<Y>& other_obj)
 {
+
+
 	//if memory address of other_obj == this object return this object
   if (this == &other_obj)
   {
@@ -113,30 +114,41 @@ my_shared_ptr<Y> & my_shared_ptr<Y>::operator=(const my_shared_ptr<Y>& other_obj
   }
   
   else
-    
+
   	//de allocate this object's data
     if (shared_ptr != nullptr && counter_ptr != nullptr)
     {
       *counter_ptr-=1;
       if (*counter_ptr == 0)
       {
+        my_shared_ptr<Y> temp = other_obj;
+
         delete shared_ptr;
         delete counter_ptr;
 
         shared_ptr = nullptr;
         counter_ptr = nullptr;
+
       }
     }
-
+    
+    
+      shared_ptr = other_obj.shared_ptr;
+      counter_ptr = other_obj.counter_ptr;
+    
     //Assign data from other object to this object
-    shared_ptr = other_obj.shared_ptr;
-    counter_ptr = other_obj.counter_ptr;
-    // *counter_ptr+=1;
+    //shared_ptr = other_obj.shared_ptr;
+    //counter_ptr = other_obj.counter_ptr;
+
+    //shared_ptr = temp.shared_ptr;
+    //counter_ptr = temp.counter_ptr;
+
+
+    
     if (counter_ptr != nullptr)
     {
       *counter_ptr+=1;
     }
-
     return *this;
 
 }
