@@ -36,9 +36,11 @@ my_unique_ptr<T>& my_unique_ptr<T>::operator=(my_unique_ptr<T>&& other_obj)
    }
    else
    {
-       unique_ptr = other_obj.unique_ptr;
-       other_obj.unique_ptr = nullptr;
-       return *this;
+      T* temp_ptr = unique_ptr;
+      unique_ptr = other_obj.unique_ptr;
+      other_obj.unique_ptr = nullptr;
+      delete temp_ptr;
+      return *this;
    }
 }
 
