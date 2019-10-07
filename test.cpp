@@ -7,6 +7,7 @@ using namespace std;
 void CheckDefaultConstr()
 {
 	my_unique_ptr<int> uptr;
+	//my_shared_ptr<int> uptr;
 
 	if (uptr.isNullptr())
 		cout << "default constructor check... OK\n";
@@ -14,7 +15,7 @@ void CheckDefaultConstr()
 		cout << "ERROR: default constructor creates dangling pointer or isNullptr doesn\'t work properly !!!\n";
 }
 
-/*
+
 void CheckPointerConstr()
 {
 	my_unique_ptr<char> uptr{ new char {'a'} };
@@ -23,8 +24,9 @@ void CheckPointerConstr()
 		cout << "pointer constructor check... OK\n";
 	else
 		cout << "ERROR: pointer constructor fails !!!\n";
+
 }
-*/
+
 
 
 void CheckMoveConstr()
@@ -38,17 +40,20 @@ void CheckMoveConstr()
 		cout << "ERROR: move constructor fails !!!\n";
 }
 
-/*
+
 void CheckCopyConstr()
 {
 	my_unique_ptr<int> uptr1{ new int {7} };
 	my_unique_ptr<int> uptr2{ uptr1 };
 
-	cout << "ERROR: Copy constructor isn\'t disabled !!!\n";
-}
-*/
 
-/*
+
+	//cout << "ERROR: Copy constructor isn\'t disabled !!!\n";
+	cout << "Copy Constructor... Ok" << endl;
+}
+
+
+
 void CheckDereferenceOp()
 {
 	my_unique_ptr<int> uptr{ new int {7} };
@@ -58,7 +63,7 @@ void CheckDereferenceOp()
 	else
 		cout << "ERROR: dereference operator fails !!!\n";
 }
-*/
+
 
 
 void CheckMemberOp()
@@ -77,11 +82,14 @@ void CheckMemberOp()
 		cout << "ERROR: member dereference operator (->) fails !!!\n";
 }
 
-/*
+
 void CheckMoveAssign()
 {
 	my_unique_ptr<int> uptr1{ new int {7} };
 	my_unique_ptr<int> uptr2;
+	//my_shared_ptr<int> uptr1{ new int {7}};
+	//my_shared_ptr<int> uptr2;
+
 
 	uptr2 = move(uptr1);
 
@@ -105,35 +113,42 @@ void CheckMoveAssign()
 
 	head->next = move(head->next->next);		// removing the second node
 }
-*/
 
-/*
+
+
+
 void CheckCopyAssign()
 {
 	my_unique_ptr<int> uptr1{ new int {7} };
 	my_unique_ptr<int> uptr2;
+	//my_shared_ptr<int> uptr1{ new int {7}};
+	//my_shared_ptr<int> uptr2;
 
 	uptr2 = uptr1;
 
-	cout << "ERROR: Copy assignment isn\'t disabled !!!\n";
+	//cout << "ERROR: Copy assignment isn\'t disabled !!!\n";
+	cout << "Copy assignment... Ok" << endl;
 }
-*/
+
+
+
+
 
 
 int main()
 {
 	CheckDefaultConstr();
-	//CheckPointerConstr();
+	CheckPointerConstr();
 	CheckMoveConstr();
-	//CheckCopyConstr();	// ATTENTION! This function SHOULD BE A CRITICAL ERROR and prevent 
+	CheckCopyConstr();	// ATTENTION! This function SHOULD BE A CRITICAL ERROR and prevent 
 						// the program from compiling. Once you ensure it does so, 
 						// COMMENT OUT the function call and the function itself!
 
-	//CheckDereferenceOp();
+	CheckDereferenceOp();
 	CheckMemberOp();
 
-	//CheckMoveAssign();
-	//CheckCopyAssign();	// ATTENTION! This function SHOULD BE A CRITICAL ERROR and prevent 
+	CheckMoveAssign();
+	CheckCopyAssign();	// ATTENTION! This function SHOULD BE A CRITICAL ERROR and prevent 
 						// the program from compiling. Once you ensure it does so, 
 						// COMMENT OUT the function call and the function itself!
 
