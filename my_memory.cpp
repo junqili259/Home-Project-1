@@ -114,15 +114,19 @@ my_shared_ptr<Y> & my_shared_ptr<Y>::operator=(const my_shared_ptr<Y>& other_obj
   {
     return *this;
   }
-  
   else
-  	//de allocate this object's data
+  {
+    //de allocate this object's data
     if (shared_ptr != nullptr && counter_ptr != nullptr)
     {
       *counter_ptr-=1;
-      
-      shared_ptr = nullptr;
-      counter_ptr = nullptr;
+      if (counter_ptr == 0)
+      {
+        delete shared_ptr;
+        delete counter_ptr;
+        shared_ptr = nullptr;
+        counter_ptr = nullptr;
+      }
     }
     //Assign data from other object to this object
     shared_ptr = other_obj.shared_ptr;
@@ -133,7 +137,8 @@ my_shared_ptr<Y> & my_shared_ptr<Y>::operator=(const my_shared_ptr<Y>& other_obj
       *counter_ptr+=1;
     }
     return *this;
-
+  }
+  
 }
 
 
@@ -159,24 +164,25 @@ my_shared_ptr<Y> & my_shared_ptr<Y>::operator=(my_shared_ptr<Y>&& other_obj)
   }
   else
   { 
-    //check if pointer was pointing prior to assignment
-    if (shared_ptr != nullptr && counter_ptr != nullptr)
-    {
-      *counter_ptr-=1;
 
-      //delete object pointed to if no more pointers point there
-      if (*counter_ptr == 0)
-      {
-        counter_ptr = nullptr;
-        shared_ptr = nullptr;
-      }
-    }
+    Y*temp_shared = shared_ptr;
+    int* temp_count = counter_ptr;
+
     shared_ptr = other_obj.shared_ptr;
     counter_ptr = other_obj.counter_ptr;
 
     other_obj.shared_ptr = nullptr;
     other_obj.counter_ptr = nullptr;
 
+    if (temp_count != nullptr)
+    {
+      *temp_count-=1;
+      if (*temp_count == 0)
+      {
+        delete temp_shared;
+        delete temp_count;
+      }
+    }
     return *this;
   }
 
