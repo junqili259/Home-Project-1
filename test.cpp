@@ -7,7 +7,7 @@ using namespace std;
 void CheckDefaultConstr()
 {
 	my_unique_ptr<int> uptr;
-	//my_shared_ptr<int> uptr;
+
 
 	if (uptr.isNullptr())
 		cout << "default constructor check... OK\n";
@@ -40,7 +40,7 @@ void CheckMoveConstr()
 		cout << "ERROR: move constructor fails !!!\n";
 }
 
-
+/*
 void CheckCopyConstr()
 {
 	my_unique_ptr<int> uptr1{ new int {7} };
@@ -48,9 +48,10 @@ void CheckCopyConstr()
 
 
 
-	//cout << "ERROR: Copy constructor isn\'t disabled !!!\n";
-	cout << "Copy Constructor... Ok" << endl;
+	cout << "ERROR: Copy constructor isn\'t disabled !!!\n";
+
 }
+*/
 
 
 
@@ -87,8 +88,7 @@ void CheckMoveAssign()
 {
 	my_unique_ptr<int> uptr1{ new int {7} };
 	my_unique_ptr<int> uptr2;
-	//my_shared_ptr<int> uptr1{ new int {7}};
-	//my_shared_ptr<int> uptr2;
+
 
 
 	uptr2 = move(uptr1);
@@ -116,19 +116,19 @@ void CheckMoveAssign()
 
 
 
-
+/*
 void CheckCopyAssign()
 {
 	my_unique_ptr<int> uptr1{ new int {7} };
 	my_unique_ptr<int> uptr2;
-	//my_shared_ptr<int> uptr1{ new int {7}};
-	//my_shared_ptr<int> uptr2;
+
 
 	uptr2 = uptr1;
 
-	//cout << "ERROR: Copy assignment isn\'t disabled !!!\n";
-	cout << "Copy assignment... Ok" << endl;
+	cout << "ERROR: Copy assignment isn\'t disabled !!!\n";
+
 }
+*/
 
 
 
@@ -140,7 +140,7 @@ int main()
 	CheckDefaultConstr();
 	CheckPointerConstr();
 	CheckMoveConstr();
-	CheckCopyConstr();	// ATTENTION! This function SHOULD BE A CRITICAL ERROR and prevent 
+	//CheckCopyConstr();	// ATTENTION! This function SHOULD BE A CRITICAL ERROR and prevent 
 						// the program from compiling. Once you ensure it does so, 
 						// COMMENT OUT the function call and the function itself!
 
@@ -148,7 +148,7 @@ int main()
 	CheckMemberOp();
 
 	CheckMoveAssign();
-	CheckCopyAssign();	// ATTENTION! This function SHOULD BE A CRITICAL ERROR and prevent 
+	//CheckCopyAssign();	// ATTENTION! This function SHOULD BE A CRITICAL ERROR and prevent 
 						// the program from compiling. Once you ensure it does so, 
 						// COMMENT OUT the function call and the function itself!
 

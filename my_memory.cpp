@@ -114,31 +114,31 @@ my_shared_ptr<Y> & my_shared_ptr<Y>::operator=(const my_shared_ptr<Y>& other_obj
   {
     return *this;
   }
-  else
-  {
     //de allocate this object's data
-    if (shared_ptr != nullptr && counter_ptr != nullptr)
+    if (shared_ptr != nullptr)
     {
       *counter_ptr-=1;
       if (counter_ptr == 0)
       {
         delete shared_ptr;
         delete counter_ptr;
-        shared_ptr = nullptr;
-        counter_ptr = nullptr;
+
+        //Assign data from other object to this object
+        shared_ptr = other_obj.shared_ptr;
+        counter_ptr = other_obj.counter_ptr;
       }
     }
-    //Assign data from other object to this object
-    shared_ptr = other_obj.shared_ptr;
-    counter_ptr = other_obj.counter_ptr;
+    else if(shared_ptr == nullptr)
+    {
+      shared_ptr = other_obj.shared_ptr;
+      counter_ptr = other_obj.counter_ptr;
+    }
     
     if (counter_ptr != nullptr)
     {
       *counter_ptr+=1;
     }
     return *this;
-  }
-  
 }
 
 
@@ -164,10 +164,11 @@ my_shared_ptr<Y> & my_shared_ptr<Y>::operator=(my_shared_ptr<Y>&& other_obj)
   }
   else
   { 
-
+    //temporary holders
     Y*temp_shared = shared_ptr;
     int* temp_count = counter_ptr;
 
+    //stealing resources from the other
     shared_ptr = other_obj.shared_ptr;
     counter_ptr = other_obj.counter_ptr;
 

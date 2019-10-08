@@ -93,16 +93,16 @@ void CheckCopyAssignment()
 
 		p2 = p1;
 		if (*p1 != 9 or *p2 != 9)
-			cout << "ERROR: move constructor is faulty !!!\n";
+			cout << "1. ERROR: move constructor is faulty !!!\n";
 	}
 
 	{
-		my_shared_ptr<int> p3{ new int{9} };
+		my_shared_ptr<int> p3{ new int{9} };      
 		my_shared_ptr<int> p4{ new int{2} };
 
 		p4 = p3;
 		if (*p3 != 9 or *p4 != 9)
-			cout << "ERROR: move constructor is faulty !!!\n";
+			cout << "2. ERROR: move constructor is faulty !!!\n";
 	}
 
 	{
@@ -113,7 +113,7 @@ void CheckCopyAssignment()
 
 		p6 = p5;
 		if (*p5 != 9 or *p6 != 9 or *p7 != 2 or *p8 != 2)
-			cout << "ERROR: move constructor is faulty !!!\n";
+			cout << "3. ERROR: move constructor is faulty !!!\n";
 	}
 
 	{
@@ -122,7 +122,7 @@ void CheckCopyAssignment()
 
 		p9 = p8;
 	}
-
+	
 	{
 		struct S
 		{
