@@ -118,7 +118,7 @@ my_shared_ptr<Y> & my_shared_ptr<Y>::operator=(const my_shared_ptr<Y>& other_obj
     if (shared_ptr != nullptr)
     {
       *counter_ptr-=1;
-      if (counter_ptr == 0)
+      if (*counter_ptr == 0)
       {
         delete shared_ptr;
         delete counter_ptr;
